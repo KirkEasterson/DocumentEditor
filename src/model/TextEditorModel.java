@@ -1,7 +1,3 @@
-////////////////////
-// Kirk Easterson //
-// CST 242 Final ///
-////////////////////
 
 package model;
 
@@ -25,26 +21,29 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
+/**
+ * This class implements the model of the Text Editor
+ * 
+ * @author Kirk Easterson
+ * @version 1.0
+ */
+
 public class TextEditorModel
 {
 	private String			text;		// Text to be modified
 	private LinkedList		wordList;	// List of following words
-							
+	
 	private File			file;		// File
 	private FileChooser		fc;			// FileChooser
 	private FileInputStream	fis;		// FileInputStream
 	private StringBuilder	builder;	// StringBuilder
 	private FileWriter		fw;			// FileWriter
 	private Stage			stage;		// Stage for showing
-							
+	
 	private TextInputDialog	numInput;	// InputDialog for number of words
 	private TextInputDialog	textInput;	// InputDialog for first word
-							
-	// private int numWordsInDoc;
-	// private FileOutputStream fos;
-	// private BufferedWriter bw;
 	
-	// Constructor
+	/** This constructs the model of the text editor with no arguments */
 	public TextEditorModel()
 	{
 		wordList = new LinkedList();
@@ -53,7 +52,11 @@ public class TextEditorModel
 				new ExtensionFilter("All Files (*.*)", "*.*"));
 	}
 	
-	// FileOpen method
+	/**
+	 * This method opens a file and returns the text, with no arguments
+	 * 
+	 * @return The text in the file
+	 */
 	public String onFileOpen()
 	{
 		// Set title of FileChooser
@@ -89,7 +92,12 @@ public class TextEditorModel
 		return text;
 	}
 	
-	// FileSave method
+	/**
+	 * This method saves a file with a specified string
+	 * 
+	 * @param text
+	 *        The text to be saved
+	 */
 	public void onFileSave(String text)
 	{
 		// Set text
@@ -115,7 +123,12 @@ public class TextEditorModel
 		}
 	}
 	
-	// EditGenerateText method
+	/**
+	 * This method generates a random document of a specified length with words taken from the document
+	 * 
+	 * @param text
+	 *        The text from the document
+	 */
 	public void onEditGenerateDocument(String text)
 	{
 		// Instantiate int for number of words to be generated
@@ -251,7 +264,13 @@ public class TextEditorModel
 		generatedDocument.showAndWait();
 	}
 	
-	// Learn
+	/**
+	 * This method generates a linked list of each word in a specified string
+	 * 
+	 * @param text
+	 *        The string to be analyzed
+	 * @return The linked list with each word
+	 */
 	public LinkedList learnText(String text)
 	{
 		// Set the text to the argument text
@@ -278,7 +297,13 @@ public class TextEditorModel
 		return wordList;
 	}
 	
-	// Get tokens method
+	/**
+	 * This searches a specified string for each word
+	 * 
+	 * @param text
+	 *        The string to be searched
+	 * @return The list with each word
+	 */
 	public List<String> getTokens(String text)
 	{
 		// Instantiate tokens ArrayList

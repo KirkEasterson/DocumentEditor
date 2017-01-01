@@ -1,7 +1,3 @@
-////////////////////
-// Kirk Easterson //
-// CST 242 Final ///
-////////////////////
 
 package view;
 
@@ -12,12 +8,24 @@ import java.util.regex.Pattern;
 
 import model.TextEditorModel;
 
+/**
+ * This implements a helper class for the text editor
+ * 
+ * @author Kirk Easterson
+ *
+ */
+
 public class TextEditorHelper
 {
 	private TextEditorModel	model;	// Model
 	private String			text;	// String to be modified
-
-	// constructor
+	
+	/**
+	 * This constructs the helper with a specified string of text to be analyzed
+	 * 
+	 * @param text
+	 *        The text to be analyzed
+	 */
 	public TextEditorHelper(String text)
 	{
 		// Inherit methods
@@ -25,15 +33,26 @@ public class TextEditorHelper
 		// Set text to argument text
 		this.text = text;
 	}
-
-	// Set text method
+	
+	/**
+	 * This class sets the text for the helper
+	 * 
+	 * @param text
+	 *        The new string for the text
+	 */
 	public void setText(String text)
 	{
 		// Set text to argument text
 		this.text = text;
 	}
-
-	// Get tokens method
+	
+	/**
+	 * This class counts the number of tokens for a specified pattern in the text
+	 * 
+	 * @param pattern
+	 *        The pattern to be used in search of tokens
+	 * @return A list of all the tokens
+	 */
 	public List<String> getTokens(String pattern)
 	{
 		// Instantiate tokens ArrayList
@@ -42,7 +61,7 @@ public class TextEditorHelper
 		Pattern tokenSplitter = Pattern.compile(pattern);
 		// Instantiate matcher
 		Matcher m = tokenSplitter.matcher(text);
-
+		
 		// Iterate through matcher
 		while (m.find())
 		{
@@ -52,8 +71,14 @@ public class TextEditorHelper
 		// Return list of all tokens
 		return tokens;
 	}
-
-	// Count syllables method
+	
+	/**
+	 * This method counts the number of syllables in a word
+	 * 
+	 * @param word
+	 *        The word to have its syllables counted
+	 * @return The number of syllables
+	 */
 	public int countSyllables(String word)
 	{
 		// Instantiate integer for number of syllables
@@ -65,7 +90,7 @@ public class TextEditorHelper
 		Matcher m = tokenSplitter.matcher(word);
 		// Set last token to empty string
 		String lastToken = "";
-
+		
 		// Iterate through matcher
 		while (m.find())
 		{
@@ -74,8 +99,8 @@ public class TextEditorHelper
 			// Set last token
 			lastToken = m.group();
 		}
-
-		// If the 'e' is islent
+		
+		// If the 'e' is silent
 		if ((num > 1) && (word.charAt(word.length() - 1) == 'e') && lastToken.equals("e"))
 		{
 			// Decrease the number of syllables by 1
@@ -84,8 +109,12 @@ public class TextEditorHelper
 		// Return the number of syllables
 		return num;
 	}
-
-	// Get syllable count method
+	
+	/**
+	 * This method returns the number of syllables in the document
+	 * 
+	 * @return The number of syllables in the text
+	 */
 	public int getSyllableCount()
 	{
 		// Instantiate and get tokens
@@ -101,8 +130,12 @@ public class TextEditorHelper
 		// Return number of syllables
 		return count;
 	}
-
-	// Get word count method
+	
+	/**
+	 * This method returns the number of words in the document
+	 * 
+	 * @return The number of words in the text
+	 */
 	public int getWordCount()
 	{
 		// Instantiate and get tokens
@@ -110,8 +143,12 @@ public class TextEditorHelper
 		// Return number of tokens
 		return tokens.size();
 	}
-
-	// Get sentence count method
+	
+	/**
+	 * This method returns the number of sentences in the document
+	 * 
+	 * @return
+	 */
 	public int getSentenceCount()
 	{
 		// Instantiate and get tokens
@@ -119,8 +156,12 @@ public class TextEditorHelper
 		// Return number of sentences
 		return tokens.size();
 	}
-
-	// Get Flesch score method
+	
+	/**
+	 * This method calculates the Flesch score for the document
+	 * 
+	 * @return The Flesch score
+	 */
 	public double getFleschScore()
 	{
 		// Instantiate score
@@ -131,5 +172,5 @@ public class TextEditorHelper
 		// Return the Flesch score
 		return score;
 	}
-
+	
 }

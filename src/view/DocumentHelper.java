@@ -1,7 +1,3 @@
-////////////////////
-// Kirk Easterson //
-// CST 242 Final ///
-////////////////////
 
 package view;
 
@@ -10,27 +6,45 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class implements the methods to help analyze the text to be learned
+ * 
+ * @author Kirk Easterson
+ * @version 1.0
+ */
 public class DocumentHelper
 {
 	private String text; // Text to be modified
-
-	// Constructor
+	
+	/**
+	 * This constructs a document with specific text
+	 * 
+	 * @param text
+	 *        The text to be analyzed
+	 */
 	public DocumentHelper(String text)
 	{
 		// Set text to argument text
 		this.text = text;
 	}
-
-	// Get tokens method
+	
+	/**
+	 * This method counts the number of tokens for a specified pattern in the text
+	 * 
+	 * @param pattern
+	 *        The pattern for analyzing
+	 * @return A list of each token as a string
+	 */
 	public List<String> getTokens(String pattern)
 	{
+		
 		// Instantiate tokens ArrayList
 		ArrayList<String> tokens = new ArrayList<>();
 		// Instantiate pattern
 		Pattern tokenSplitter = Pattern.compile(pattern);
 		// Instantiate matcher
 		Matcher m = tokenSplitter.matcher(text);
-
+		
 		// Iterate through matcher
 		while (m.find())
 		{
@@ -40,8 +54,14 @@ public class DocumentHelper
 		// Return list of all tokens
 		return tokens;
 	}
-
-	// Count syllables method
+	
+	/**
+	 * This method counts the syllables in a specified word
+	 * 
+	 * @param word
+	 *        The string to count the syllables in
+	 * @return The number of syllables in the word
+	 */
 	public int countSyllables(String word)
 	{
 		// Instantiate integer for number of syllables
@@ -54,7 +74,7 @@ public class DocumentHelper
 		Matcher m = tokenSplitter.matcher(word);
 		// Set last token to empty string
 		String lastToken = "";
-
+		
 		// Iterate through matcher
 		while (m.find())
 		{
@@ -63,7 +83,7 @@ public class DocumentHelper
 			// Set last token
 			lastToken = m.group();
 		}
-
+		
 		// If the 'e' is silent
 		if ((num > 1) && (word.charAt(word.length() - 1) == 'e') && lastToken.equals("e"))
 		{
@@ -73,8 +93,12 @@ public class DocumentHelper
 		// Return number of syllables
 		return num;
 	}
-
-	// Get syllable count method
+	
+	/**
+	 * This method counts the number of syllables in the text
+	 * 
+	 * @return The number of syllables in the text
+	 */
 	public int getSyllableCount()
 	{
 		// Instantiate and get tokens
@@ -90,8 +114,12 @@ public class DocumentHelper
 		// Return number of syllables
 		return count;
 	}
-
-	// Get word count method
+	
+	/**
+	 * This method counts the number of words in the text
+	 * 
+	 * @return The number of words in the text
+	 */
 	public int getWordCount()
 	{
 		// Instantiate and get tokens
@@ -99,8 +127,12 @@ public class DocumentHelper
 		// Return number of tokens
 		return tokens.size();
 	}
-
-	// Get sentence count method
+	
+	/**
+	 * This method counts the number of sentences in the text
+	 * 
+	 * @return The number of sentences in the text
+	 */
 	public int getSentenceCount()
 	{
 		// Instantiate and get tokens
@@ -108,8 +140,12 @@ public class DocumentHelper
 		// Return number of sentences
 		return tokens.size();
 	}
-
-	// Get Flesch score method
+	
+	/**
+	 * This method calculates the Flesch score for the text
+	 * 
+	 * @return The Flesch score
+	 */
 	public double getFleschScore()
 	{
 		// Instantiate score
@@ -120,5 +156,5 @@ public class DocumentHelper
 		// Return the Flesch score
 		return score;
 	}
-
+	
 }

@@ -1,7 +1,3 @@
-////////////////////
-// Kirk Easterson //
-// CST 242 Final ///
-////////////////////
 
 package view;
 
@@ -24,27 +20,34 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+/**
+ * This implements the view for the text editor
+ * 
+ * @author bryansargent
+ * @version 1.0
+ */
+
 public class TextEditorView
 {
 	private MenuBar				menuBar;					// MenuBar for top
-								
+	
 	private Menu				menuFile;					// File menu
 	private MenuItem			menuFileNew;				// File -> New
 	private MenuItem			menuFileOpen;				// File -> Open
 	private MenuItem			menuFileSave;				// File -> Save
 	private MenuItem			menuFileExit;				// File -> Exit
-								
+	
 	private Menu				menuEdit;					// Edit menu
 	private MenuItem			menuEditWordCount;			// Edit -> Word Count
 	private MenuItem			menuEditSentenceCount;		// Edit -> Sentence Count
 	private MenuItem			menuEditFleschScore;		// Edit -> Flesch Score
 	private MenuItem			menuEditGenerateDocument;	// Edit -> Generate Document
-								
+	
 	private TextArea			textArea;					// Text Area for text
-								
+	
 	private Timer				timer;						// Timer
 	private TextEditorHelper	textEditorHelper;			// Text editor helper
-								
+	
 	private HBox				wordCountHBox;				// Word count HBox
 	private Label				wordCountLabel;				// Word count label
 	private Label				wordCountResultLabel;		// Word count result label
@@ -54,23 +57,28 @@ public class TextEditorView
 	private HBox				fleschScoreHBox;			// Flesch score HBox
 	private Label				fleschScoreLabel;			// Flesch score label
 	private Label				fleschScoreResultLabel;		// Flesch score result label
-								
+	
 	private AnchorPane			textInfoAnchorPane;			// Text info anchor pane
-								
+	
 	private BorderPane			border;						// Border pane
 	private TextEditorListener	textEditorListener;			// Text editor listener
 	private Stage				stage;						// Stage
 	private Alert				alert;						// Alert for generated document
-								
+	
 	private String				text;						// String for document text
-								
-	// Constructor
+	
+	/**
+	 * This method constructs the view with a stage as an argument
+	 * 
+	 * @param stage
+	 *        The stage for the view
+	 */
 	public TextEditorView(Stage stage)
 	{
 		// Set the stage
 		this.stage = stage;
 		// Set stage title
-		stage.setTitle("Text Editor v1.1");
+		stage.setTitle("Text Editor v1.0");
 		
 		// Instantiate menu bar
 		menuBar = new MenuBar();
@@ -224,7 +232,7 @@ public class TextEditorView
 		// Add menu items to edit menu
 		menuEdit.getItems().addAll(menuEditWordCount, menuEditSentenceCount, menuEditFleschScore,
 				menuEditGenerateDocument);
-				
+		
 		// Add menus to menu bar
 		menuBar.getMenus().addAll(menuFile, menuEdit);
 		
@@ -324,19 +332,29 @@ public class TextEditorView
 		border.setBottom(textInfoAnchorPane);
 		
 		// Set scene
-		stage.setScene(new Scene(border, 800, 800));
+		stage.setScene(new Scene(border, 500, 500));
 		// Show stage
 		stage.show();
 	}
 	
-	// Set text editor listener method
+	/**
+	 * This method sets the listener for the text editor
+	 * 
+	 * @param windowListener
+	 *        The listener to be set for the text editor
+	 */
 	public void setTextEditorListener(TextEditorListener windowListener)
 	{
 		// Set listener to argument listener
 		this.textEditorListener = windowListener;
 	}
 	
-	// Set text method
+	/**
+	 * This method sets the text for the editor
+	 * 
+	 * @param newText
+	 *        The text to be displayed in the editor window
+	 */
 	public void setText(String newText)
 	{
 		// Set text area text to newText argument

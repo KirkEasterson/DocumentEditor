@@ -1,16 +1,21 @@
-////////////////////
-// Kirk Easterson //
-// CST 242 Final ///
-////////////////////
 
 package model;
 
+/**
+ * This generates the linked list in which data is collected form the document
+ * 
+ * @author Kirk Easterson
+ * @version 1.0
+ *
+ */
 public class LinkedList
 {
 	public Link	first;	// First link
 	public int	nElems;	// Number of elements
-
-	// Constructor
+	
+	/**
+	 * This constructs the linked list with no arguments
+	 */
 	public LinkedList()
 	{
 		// First link is null
@@ -18,8 +23,15 @@ public class LinkedList
 		// Instantiate nElems to 0
 		nElems = 0;
 	}
-
-	// Insert method with two arguments
+	
+	/**
+	 * This method inserts two specified Strings into the linked list
+	 * 
+	 * @param sData
+	 *        First string to be entered
+	 * @param nextSData
+	 *        Second string to be entered
+	 */
 	public void insert(String sData, String nextSData)
 	{
 		// Increment nElems
@@ -33,10 +45,10 @@ public class LinkedList
 			first.next = new Link(nextSData);
 			return;
 		}
-
+		
 		// Set current link to the first link
 		Link current = first;
-
+		
 		// Check if link already exists
 		while (current.next != null)
 		{
@@ -50,7 +62,7 @@ public class LinkedList
 			// Set current to next link
 			current = current.next;
 		}
-
+		
 		// Link doesn't exist, create new one
 		Link newLink = new Link(sData);
 		// Add to LinkedList
@@ -58,8 +70,14 @@ public class LinkedList
 		// Set newLink's next link
 		newLink.next = new Link(nextSData);
 	}
-
-	// Find method
+	
+	/**
+	 * This method finds a link of a specified String
+	 * 
+	 * @param key
+	 *        The String to be searched
+	 * @return The link with the data. If there is no match, it returns null
+	 */
 	public Link find(String key)
 	{
 		// Set current link to first
@@ -79,5 +97,5 @@ public class LinkedList
 		}
 		return current;
 	}
-
+	
 }

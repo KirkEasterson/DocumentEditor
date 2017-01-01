@@ -1,16 +1,31 @@
-// POSSIBLE DELETION
 
 package model;
+
+/**
+ * This class implements a linked list of words
+ * 
+ * @author Kirk Easterson
+ *
+ */
 
 public class WordLinkedList
 {
 	public WordLink first;
-
+	
+	/**
+	 * This constructs the linked list with no argument
+	 */
 	public WordLinkedList()
 	{
 		first = null;
 	}
-
+	
+	/**
+	 * This method inserts a string into the list with a specified string
+	 * 
+	 * @param sData
+	 *        The string to be inserted
+	 */
 	public void insert(String sData)
 	{
 		WordLink newLink = new WordLink(sData);
@@ -30,26 +45,40 @@ public class WordLinkedList
 		}
 		newLink.next = current;
 	}
-
+	
+	/**
+	 * This method inserts a string as the first link
+	 * 
+	 * @param sData
+	 *        The string to be added
+	 */
 	public void insertFirst(String sData)
 	{
 		WordLink newLink = new WordLink(sData);
 		newLink.next = first;
 		first = newLink;
 	}
-
+	
+	/**
+	 * This method deletes the first link
+	 * 
+	 * @return The word link that was deleted
+	 */
 	public WordLink deleteFirst()
 	{
 		WordLink temp = first;
 		first = first.next;
 		return temp; // To show which link was deleted
 	}
-
+	
+	/**
+	 * This method displays each link in the list
+	 */
 	public void displayList()
 	{
 		System.out.println("List (First --> Last):");
 		WordLink current = first;
-
+		
 		while (current != null)
 		{
 			current.displayLink();
@@ -57,7 +86,15 @@ public class WordLinkedList
 		}
 		System.out.println();
 	}
-
+	
+	/**
+	 * This method finds the link with a specified string.
+	 * If no link exists, it returns null.
+	 * 
+	 * @param key
+	 *        The string to be searched for
+	 * @return The link containing the word
+	 */
 	public WordLink find(String key)
 	{
 		WordLink current = first;
@@ -65,7 +102,7 @@ public class WordLinkedList
 		{
 			if (current.next == null)
 			{
-
+				
 			} else
 			{
 				current = current.next;
@@ -73,23 +110,15 @@ public class WordLinkedList
 		}
 		return current;
 	}
-
-	// public boolean ifExists(String key)
-	// {
-	// WordLink current = first;
-	// while (!current.sData.equalsIgnoreCase(key))
-	// {
-	// if (current.next == null)
-	// {
-	// return false;
-	// } else
-	// {
-	// current = current.next;
-	// }
-	// }
-	// return true;
-	// }
-
+	
+	/**
+	 * This method deletes a link containing a specified word.
+	 * If no link exists, it returns null.
+	 * 
+	 * @param key
+	 *        The string to be searched for
+	 * @return The link that was deleted
+	 */
 	public WordLink delete(String key)
 	{
 		WordLink current = first;
@@ -114,5 +143,5 @@ public class WordLinkedList
 		}
 		return current;
 	}
-
+	
 }
